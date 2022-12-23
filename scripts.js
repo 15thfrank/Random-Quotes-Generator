@@ -26,6 +26,7 @@ async function getQuotes() {
 
 // Run on load
 getQuotes();
-const newQuoteBtn = document.getElementById("new-quote");
 
+// Load new quote on click of New Quote button
+const newQuoteBtn = document.getElementById("new-quote");
 newQuoteBtn.addEventListener('click', newQuote)
