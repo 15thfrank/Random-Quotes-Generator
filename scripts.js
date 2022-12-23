@@ -1,13 +1,16 @@
+let quoteText = document.getElementById("quote");
+let quoteAuthor = document.getElementById("author");
+
 let apiQuotes = [];
 
 // New quote
 function newQuote() {
     let quote = apiQuotes[Math.floor(Math.random() * (apiQuotes.length - 1))];
-    document.getElementById("quote").innerText = quote.text;
+    quoteText.innerText = quote.text;
     if (quote.author != null) {
-        document.getElementById("author").innerText = quote.author;
+        quoteAuthor.innerText = quote.author;
     } else {
-        document.getElementById("author").innerText = "Anonymous";
+        quoteAuthor.innerText = "Anonymous";
     }
 }
 
@@ -29,4 +32,13 @@ getQuotes();
 
 // Load new quote on click of New Quote button
 const newQuoteBtn = document.getElementById("new-quote");
-newQuoteBtn.addEventListener('click', newQuote)
+newQuoteBtn.addEventListener('click', newQuote);
+
+
+// Tweet quote functionality
+const tweetQuote = function() {
+    const twitterURL = `https://twitter.com/intent/tweet?text=${quoteText.textContent} ~ ${quoteAuthor.textContent} #Inspiration #InspirationalQuotes`;
+    window.open(twitterURL, '_blank');
+}
+
+document.getElementById('twitter').addEventListener('click', tweetQuote);
